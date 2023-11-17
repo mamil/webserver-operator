@@ -24,7 +24,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/bigwhite/webserver-operator/test/utils"
+	"github.com/mamil/webserver-operator/test/utils"
 )
 
 const namespace = "webserver-operator-system"

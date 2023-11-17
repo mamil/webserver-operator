@@ -32,8 +32,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 
-	mydomainv1 "github.com/bigwhite/webserver-operator/api/v1"
-	"github.com/bigwhite/webserver-operator/internal/controller"
+	mydomainv1 "github.com/mamil/webserver-operator/api/v1"
+	"github.com/mamil/webserver-operator/internal/controller"
 	//+kubebuilder:scaffold:imports
 )
 

@@ -27,7 +27,7 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	mydomainv1 "github.com/bigwhite/webserver-operator/api/v1"
+	mydomainv1 "github.com/mamil/webserver-operator/api/v1"
 )
 
 var _ = Describe("WebServer Controller", func() {
