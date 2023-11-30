@@ -10,3 +10,5 @@ metadata:
   name: webserver-sample
 spec:
   # TODO(user): Add fields here
+  image: nginx:1.23.1
+  replicas: 3
