@@ -29,8 +29,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/go-logr/logr"
 	mydomainv1 "github.com/mamil/webserver-operator/api/v1"
+	logr "github.com/sirupsen/logrus"
 )
 
 // WebServerReconciler reconciles a WebServer object
@@ -54,7 +54,9 @@ type WebServerReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.16.3/pkg/reconcile
 func (r *WebServerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	log := r.Log.WithValues("Webserver", req.NamespacedName)
+	log := r.Log.WithFields(logr.Fields{
+		"webserver": req.NamespacedName,
+	})
 
 	instance := &mydomainv1.WebServer{}
 	err := r.Get(ctx, req.NamespacedName, instance)
