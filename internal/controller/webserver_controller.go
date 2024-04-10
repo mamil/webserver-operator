@@ -198,8 +198,9 @@ func (r *WebServerReconciler) deploymentForWebserver(ws *mydomainv1.WebServer) *
 
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
-						Image: ws.Spec.Image,
-						Name:  "webserver",
+						Image:           ws.Spec.Image,
+						Name:            "webserver",
+						ImagePullPolicy: "IfNotPresent",
 					}},
 				},
 			},
