@@ -89,3 +89,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+# 注意事项
+## role
+创建rabc的时候，role.yaml中定义了ClusterRole。
+但是apply之后，关于deployments，services的权限可能会没有创建进去。这样会导致创建WebServer CR失败。
+需要手动补全。
