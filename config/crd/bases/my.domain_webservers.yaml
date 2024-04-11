@@ -41,6 +41,12 @@ spec:
               image:
                 description: The container image of the webserver
                 type: string
+              nodeport:
+                description: The nodeport of the webserver
+                type: integer
+              port:
+                description: The port that the webserver should have
+                type: integer
               replicas:
                 description: The number of replicas that the webserver should have
                 type: integer
