@@ -141,12 +141,28 @@ func (r *WebServerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 	}
 
 	// Tbd: Ensure the service state is the same as the spec, your homework
-	// proto := foundService.Spec.Ports[0].Protocol
-	// nodePort := foundService.Spec.Ports[0].NodePort
-	// port := foundService.Spec.Ports[0].Port
+	nodePort := int32(instance.Spec.NodePort)
+	port := int32(instance.Spec.Port)
 
-	// needUpd = false
-	// if
+	needUpd = false
+	if foundService.Spec.Ports[0].NodePort != nodePort {
+		log.Info("Svc spec.nodeport change", "from", foundService.Spec.Ports[0].NodePort, "to", nodePort)
+		foundService.Spec.Ports[0].NodePort = nodePort
+		needUpd = true
+	}
+	if foundService.Spec.Ports[0].Port != port {
+		log.Info("Svc spec.port change", "from", foundService.Spec.Ports[0].Port, "to", nodePort)
+		foundService.Spec.Ports[0].Port = port
+		needUpd = true
+	}
+	if needUpd {
+		err = r.Update(ctx, foundService)
+		if err != nil {
+			log.Error(err, "Failed to update Svc", "Svc.Namespace", foundService.Namespace, "Svc.Name", foundService.Name)
+			return ctrl.Result{RequeueAfter: time.Second * 5}, err
+		}
+		return ctrl.Result{Requeue: true}, nil
+	}
 
 	// reconcile webserver operator in again 10 seconds
 	return ctrl.Result{RequeueAfter: time.Second * 10}, nil

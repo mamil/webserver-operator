@@ -34,6 +34,12 @@ type WebServerSpec struct {
 	// The container image of the webserver
 	Image string `json:"image,omitempty"`
 
+	// The port that the webserver should have
+	Port int `json:"port,omitempty"`
+
+	// The nodeport of the webserver
+	NodePort int `json:"nodeport,omitempty"`
+
 	// Foo is an example field of WebServer. Edit webserver_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
 }
