@@ -57,6 +57,7 @@ func (r *WebServerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 	log := r.Log.WithFields(logr.Fields{
 		"webserver": req.NamespacedName,
 	})
+	ctrl.Log.Info("test!!!!!!!!!!")
 
 	instance := &mydomainv1.WebServer{}
 	err := r.Get(ctx, req.NamespacedName, instance)
