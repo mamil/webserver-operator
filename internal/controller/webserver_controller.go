@@ -73,6 +73,8 @@ func (r *WebServerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 		return ctrl.Result{RequeueAfter: time.Second * 5}, err
 	}
 
+	log.Info(fmt.Sprintf("instance:%+v", instance))
+
 	// Check if the webserver deployment already exists, if not, create a new one
 	found := &appsv1.Deployment{}
 	err = r.Get(ctx, types.NamespacedName{Name: instance.Name, Namespace: instance.Namespace}, found)
@@ -139,6 +141,12 @@ func (r *WebServerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 	}
 
 	// Tbd: Ensure the service state is the same as the spec, your homework
+	// proto := foundService.Spec.Ports[0].Protocol
+	// nodePort := foundService.Spec.Ports[0].NodePort
+	// port := foundService.Spec.Ports[0].Port
+
+	// needUpd = false
+	// if
 
 	// reconcile webserver operator in again 10 seconds
 	return ctrl.Result{RequeueAfter: time.Second * 10}, nil
