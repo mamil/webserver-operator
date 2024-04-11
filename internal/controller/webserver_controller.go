@@ -18,6 +18,7 @@ package controller
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	appsv1 "k8s.io/api/apps/v1"
@@ -54,9 +55,8 @@ type WebServerReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.16.3/pkg/reconcile
 func (r *WebServerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	log := r.Log.WithFields(logr.Fields{
-		"webserver": req.NamespacedName,
-	})
+	log := ctrl.Log.WithName(fmt.Sprintf("webserver %v", req.NamespacedName))
+	ctrl.Log.Info("Reconcile running")
 
 	instance := &mydomainv1.WebServer{}
 	err := r.Get(ctx, req.NamespacedName, instance)
