@@ -56,7 +56,7 @@ type WebServerReconciler struct {
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.16.3/pkg/reconcile
 func (r *WebServerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := ctrl.Log.WithName(fmt.Sprintf("webserver %v", req.NamespacedName))
-	ctrl.Log.Info("test!!!!!!!!!!")
+	ctrl.Log.Info("Reconcile running")
 
 	instance := &mydomainv1.WebServer{}
 	err := r.Get(ctx, req.NamespacedName, instance)
