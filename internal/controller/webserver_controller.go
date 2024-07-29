@@ -41,6 +41,9 @@ type WebServerReconciler struct {
 	Scheme *runtime.Scheme
 }
 
+// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=create;delete;get;list;patch;update;watch
+// +kubebuilder:rbac:groups="",resources=services,verbs=create;delete;get;list;patch;update;watch
+// +kubebuilder:rbac:groups=apps,resources=services,verbs=create;delete;get;list;patch;update;watch
 //+kubebuilder:rbac:groups=my.domain,resources=webservers,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=my.domain,resources=webservers/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=my.domain,resources=webservers/finalizers,verbs=update
